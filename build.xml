@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project name="ExtrRecom" basedir="." default="war">
+	<property file="build.properties"/>
+ 
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build" />
+
+
+	<path id="project.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+
+	<target name="prepare">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src.dir}" destdir="${build.dir}">
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>
+
+
+	<target name="gwt-compile" depends="compile">
+		<java failover="true" fork="true" classname="com.google.gwt.dev.Compiler">
+			<classpath>
+				<pathelement location="${src.dir}" />
+				<pathelement location="${build.dir}" />
+				<path refid="project.classpath" />
+			</classpath>
+			<jvmarg value="-Xmx256M" />
+			<arg value="${gwt.module.name}" />
+		</java>
+	</target>
+
+	<target name="war" depends="gwt-compile">
+
+	</target>
+</project>

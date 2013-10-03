@@ -1,0 +1,2 @@
+serviceClass: com.bah.extrrecom.client.GreetingService
+path: 1F002D746B4A98D90718E2AC29900770.gwt.rpc
