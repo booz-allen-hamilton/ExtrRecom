@@ -30,10 +30,9 @@ public class ExtrRecom implements EntryPoint {
 			+ "connection and try again.";
 
 	/**
-	 * Create a remote service proxy to talk to the server-side Greeting service.
+	 * Create a remote service proxy to talk to the server-side Extrrecoming service.
 	 */
-	private final GreetingServiceAsync greetingService = GWT
-			.create(GreetingService.class);
+	private final ExtrRecomServiceAsync extrrecomingService = GWT.create(ExtrRecomService.class);
 
 	/**
 	 * This is the entry point method.
@@ -119,7 +118,7 @@ public class ExtrRecom implements EntryPoint {
 				sendButton.setEnabled(false);
 				textToServerLabel.setText(textToServer);
 				serverResponseLabel.setText("");
-				greetingService.greetServer(textToServer,
+				extrrecomingService.extrrecomServer(textToServer,
 						new AsyncCallback<String>() {
 							public void onFailure(Throwable caught) {
 								// Show the RPC error message to the user
